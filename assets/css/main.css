@@ -4,6 +4,7 @@
     width: 100%;
     min-height: 85vh; 
     padding-top: var(--header-height); /* 헤더에 가려지지 않게 섹션마다 상단 여백 추가 */
+    padding-bottom: 100px;
 }
 
 
@@ -69,17 +70,16 @@
 
 .identity-header .intro-text {
     font-size: 15px;
-    font-weight: 300;
     line-height: 1.6;
     word-break: keep-all;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 /* Identity 전체 그리드 */
 .identity-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr; 
-    gap: 100px;
+    grid-template-columns: 1fr 1.1fr; 
+    gap: 120px;
     align-items: stretch; /* 좌우 컬럼 높이를 동일하게 맞춤 (바닥 정렬의 핵심) */
 }
 
@@ -101,7 +101,7 @@
 .identity-sub-section .sub-section-title {
     font-size: 15px;
     font-weight: 600;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.02em;
 }
 
@@ -119,9 +119,7 @@
 }
 
 .skill-item dt {
-    /* font-size: 13px; */
     font-weight: 500;
-    /* color: #888; */
     margin-bottom: 10px;
 }
 
@@ -205,6 +203,9 @@
         font-size: 16px;
     }
 }
+
+
+
 
 
 
@@ -412,6 +413,9 @@
     }
 }
 
+
+
+
 /* --- Experience Section --- */
 
 #experience {
@@ -425,7 +429,7 @@
 }
 
 .exp-intro {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     margin: 30px 0; /* 제목과 버튼 사이 간격 */
     word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
@@ -541,6 +545,9 @@
     }
 }
 
+
+
+
 /* --- Modal (팝업) 스타일 --- */
 
 /* 모달 배경 (어두운 오버레이) */
@@ -610,6 +617,8 @@
 }
 
 
+
+
 /* --- Contact Section --- */
 
 #contact{
@@ -660,7 +669,7 @@
 /* "HEY : )" 문구 */
 .info-greeting {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.02em;
     margin-bottom: 30px; /* 리스트와 간격 */
 }
@@ -682,12 +691,13 @@
     width: 70px; /* 라벨 영역 너비 고정 */
     font-size: 14px;
     font-weight: 600;
-    color: #000;
+    color: #2B2B2B;
 }
 
 .info-value {
     flex: 1; /* 가용한 공간 모두 차지 */
     font-size: 14px;
+    font-weight: 300;
     color: #666;
     letter-spacing: -0.01em;
 }
