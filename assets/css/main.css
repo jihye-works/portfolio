@@ -63,58 +63,150 @@
 
 /* --- Identity Section --- */
 
+.identity-header {
+    margin-bottom: 60px; /* 초기 여백 확보 */
+}
+
+.identity-header .intro-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    word-break: keep-all;
+    margin-bottom: 10px;
+}
+
 /* Identity 전체 그리드 */
 .identity-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr; /* 왼쪽 정보창을 약간 더 넓게 */
-    gap: 100px; /* 정보와 이미지 사이의 넉넉한 여백 */
-    align-items: start; /* 위쪽 라인 맞춤 (헤더와 이미지 시작점 일치 핵심) */
+    grid-template-columns: 1.3fr 1fr; 
+    gap: 100px;
+    align-items: stretch; /* 좌우 컬럼 높이를 동일하게 맞춤 (바닥 정렬의 핵심) */
 }
 
-/* 상단 소개 문구 */
-.intro-text {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 80px;
-    color: #333;
-    font-weight: 400;
-}
-
-/* 리스트 레이아웃  */
-.info-item {
+.identity-info {
     display: flex;
-    padding: 25px 0;
-    border-top: 1px solid #eee; 
+    flex-direction: column;
+    justify-content: flex-end; /* 우측 이미지 높이에 맞춰 모든 내용을 바닥으로 밀어냄 */
 }
 
-.info-item dt {
-    width: 120px; /* 왼쪽 키워드 너비 고정 */
-    font-weight: 700;
-    font-size: 16px;
-    flex-shrink: 0;
+.identity-sub-section {
+    display: grid;
+    grid-template-columns: 140px 1fr; /* 좌측 소제목 너비 고정 */
+    gap: 20px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
 }
 
-.info-item dd {
+.identity-sub-section .sub-section-title {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.capabilities-text, .skill-list {
     font-size: 14px;
-    line-height: 1.8;
-    color: #555;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #2B2B2B;
 }
 
-/* 이미지 박스 (오른쪽) */
-.identity-visual {
-    width: 100%;
-}
-
-.image-placeholder {
-    width: 100%;
-    aspect-ratio: 1 / 1.1; /* 와이어프레임 비율과 비슷하게 설정 */
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
+/* 기술 리스트 (dl, dt, dd) */
+.skill-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #999;
+    gap: 50px; /* 각 스택 간의 간격 */
 }
+
+.skill-item dt {
+    /* font-size: 13px; */
+    font-weight: 500;
+    /* color: #888; */
+    margin-bottom: 10px;
+}
+
+.skill-item dd {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2B2B2B;
+    white-space: pre-line; /* 줄바꿈 대응 */
+}
+
+/* 4. 우측 비주얼 영역 */
+.identity-visual {
+    position: relative; /* 드로잉의 absolute 기준 */
+    display: inline-block; /* 내용물(이미지) 너비만큼만 박스 형성 */
+    width: 100%;
+}
+
+.visual-main {
+    width: 100%;
+}
+
+.visual-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.bg-photo img {
+    width: 100%;
+    display: block;
+}
+
+.visual-drawing {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 110%;   /* 이미지보다 약간 크게 설정 */
+    pointer-events: none; /* 하단 텍스트 선택 방해 금지 */
+    z-index: 10;
+}
+
+.visual-drawing img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- 📱 Identity 모바일 반응형 --- */
+@media (max-width: 1024px) {
+    .identity-grid {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .identity-header {
+        margin-bottom: 60px;
+    }
+    
+    .identity-grid {
+        grid-template-columns: 1fr; /* 모바일에선 1열로 */
+        gap: 60px;
+    }
+
+    .identity-info {
+        order: 2; /* 이미지가 위로 오고 정보가 아래로 가게 순서 조정 */
+        justify-content: flex-start;
+    }
+
+    .identity-visual {
+        order: 1;
+    }
+
+    .skill-list {
+        flex-direction: column; /* 스택 리스트 세로 정렬 */
+        gap: 25px;
+    }
+    
+    .identity-header .intro-text {
+        font-size: 16px;
+    }
+}
+
+
 
 
 /* --- Works Section --- */
