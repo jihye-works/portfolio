@@ -307,6 +307,9 @@
     margin-bottom: 20px;
     letter-spacing: -0.04em;
 }
+.work-title .icon img{
+    display: inline-block;
+}
 
 
 .work-desc {
