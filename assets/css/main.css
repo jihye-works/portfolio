@@ -73,12 +73,11 @@
     grid-template-columns: repeat(12, 1fr);
 }
 
-#identity .big-typo:first-child { grid-column: 5 / span 8; } /* THIS IS */
+#identity .big-typo:first-child { grid-column: 5 / span 8; } /* ARCHIVE*/
 #identity .big-typo:nth-child(2) { grid-column: 4 / span 8; } /* Hye*/
 #identity .intro-description { grid-column: 1 / -1; }
-#identity .big-typo:last-child { grid-column: 3 / span 10; } /* PLANNING */
 .works-bridge .strategy-line { grid-column: 2 / span 10; }
-.works-bridge .work-line { grid-column: 8 / -1; }
+.works-bridge .work-line { grid-column: 7 / -1; }
 .editorial-note-section .editorial-note {
     grid-column: 3 / span 6;
 }
@@ -87,59 +86,56 @@
 .big-typo {
     display: flex;
     align-items: center;
-    font-size: clamp(4rem, 8vw, 7.5rem); /* 반응형 폰트 크기 */
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+    font-size: clamp(3.5rem, 8vw, 7rem); /* 반응형 폰트 크기 */
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
     color: #2B2B2B;
 }
-.big-typo .point {
-    font-weight: 800;       /* ExtraBold */
+.logo-point{
     color: var(--primary-color);
-    margin-left: 4px;
+    font-weight: 800;
 }
 
 .annotation {
-    font-size: 0.8rem;
-    font-weight: 400;
     letter-spacing: 0em;
     text-transform: none;
-    color: #666;
     white-space: nowrap;
-}
-.annotation.bottom{
-    align-self: flex-end;
-}
-.annotation.top{
     align-self: flex-start;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
 }
+.work-line .light{
+    /* font-style: italic; */
+    font-weight: 300; /* WORK보다 살짝 가늘게 */
+    text-transform: lowercase; /* 명시적으로 소문자 고정 */
+}
+
 
 
 /* 괄호와 이미지 박스 */
 .bracket-wrap {
-    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 400;
     color: #2B2B2B;
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    transform: translateY(-5px);
+    margin: 0 10px;
 }
 
-.bracket-wrap .box {
+.ident-imgbox {
     display: inline-block;
-    width: 1em; /* 글자 크기에 비례 */
-    height: 1em;
+    width: 1.4em;
+    height: 0.8em;
     background-color: #E0E0E0;
     margin: 0 0.1em;
     overflow: hidden;
     vertical-align: middle;
 }
 
-.bracket-wrap .box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 
 /* 중간 설명 문구 */
@@ -172,15 +168,10 @@
 .strategy-line {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
-.point-star {
-    font-size: 0.5em;
-    color: var(--primary-color);
-    vertical-align: super;
-    margin-left: 5px;
-}
+
 
 /* 에디토리얼 노트 (A안: 주석 형태의 버튼) */
 .editorial-note-section {
@@ -198,10 +189,11 @@
     padding: 20px;
     border: 1px solid transparent; /* 호버 시 가이드라인 용 */
 }
-
-.editorial-note .point-star {
-    font-size: 1.5rem;
-    margin: 0;
+.point-star {
+    font-size: 2em;
+    color: var(--primary-color);
+    vertical-align: super;
+    margin-left: 5px;
 }
 
 .edit-txt {
