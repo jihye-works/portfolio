@@ -144,3 +144,23 @@
      loadComponent('main-header', 'header.html');
      loadComponent('main-footer', 'footer.html');
  });
+
+ /* --- 촤르르 등장 인터랙션 (기존 코드와 별개로 작동) --- */
+ function initReveal() {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // 지금 화면에 있는 .reveal들 감시
+    document.querySelectorAll('.reveal').forEach((el) => {
+        revealObserver.observe(el);
+    });
+}
+
+// 1. 처음 페이지 로드 시 실행
+document.addEventListener('DOMContentLoaded', initReveal);
+console.log('감시 대상 개수:', document.querySelectorAll('.reveal').length);
