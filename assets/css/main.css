@@ -6,7 +6,7 @@
     /* padding-top: var(--header-height);  */
 }
 
-
+ 
 /* --- Brand-Film Section --- */
 
 .hero-section {
@@ -212,6 +212,15 @@
     color: #2B2B2B;
 }
 
+.work-num {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    display: block;
+    margin-bottom: 20px;
+}
+
+
 .edit-desc {
     font-size: 0.95rem;
     line-height: 1.5;
@@ -219,7 +228,8 @@
     margin-bottom: 10px;
 }
 
-.edit-btn {
+/* 상세페이지 버튼 공통 */
+.work-btn {
     font-size: 0.9rem;
     font-weight: 400;
     color: #2B2B2B;
@@ -228,27 +238,30 @@
     position: relative;
     display: inline-flex;
     width: fit-content; 
+    z-index: 1;
 }
-.edit-btn::after {
+.work-btn::after {
     content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 0; /* 처음엔 안 보임 */
-    height: 1px;
-    background-color: #2B2B2B;
+    height: 12px;
+    background-color: #eee;
     transition: width 0.3s ease;
+    z-index: -1;
 }
-.editorial-note-link:hover .edit-btn::after {
+.editorial-note-link:hover .work-btn::after, .work-link:hover .work-btn::after {
     width: 100%; /* 호버 시 슥- 그어짐 */
 }
 
-.edit-arrow {
+.work-arrow {
     transition: transform 0.3s ease;
 }
 
-.editorial-note-link:hover .edit-arrow {
+.editorial-note-link:hover .work-arrow, .work-link:hover .work-arrow {
     transform: translate(3px, -3px); 
+    color: var(--primary-color);
 }
 
 
@@ -278,13 +291,7 @@
 }
 
 /* 숫자 스타일 */
-.work-num {
-    font-size: 70px;
-    font-weight: 500;
-    line-height: 1;
-    margin-bottom: 20px;
-    letter-spacing: -0.05em;
-}
+
 
 /* 이미지 박스 공통 */
 .work-img {
@@ -296,6 +303,11 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    filter: grayscale(80%);
+    transition: filter 0.5s ease-in-out;
+}
+.work-link:hover img{
+    filter: grayscale(0%);
 }
 
 /* 01번 프로젝트 (가로 배치) */
@@ -326,7 +338,7 @@
 
 .work-title h3 {
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* 카테고리 괄호 */
@@ -345,19 +357,36 @@
     word-break: keep-all;
 }
 
-.work-sub-desc {
-    font-weight: 300;
-    margin-bottom: 8px;
-}
-
 .work-desc {
     font-weight: 500;
+}
+
+.work-scope {
+    list-style: none; /* 기본 점 제거 */
+    padding: 0;
+    margin: 20px 0 0 0;
+    display: flex; 
+    flex-direction: column; 
+    /* gap: 6px; 리스트 사이 간격 */
+}
+
+.work-scope li {
+    font-size: 14px;
+    font-weight: 400;
+    color: #555; 
+    display: flex;
+    align-items: center;
+}
+.work-scope li::before {
+    content: '-';
+    margin-right: 6px;
+    color: #bbb;
 }
 
 
 
 /* --- 버튼 호버 인터랙션 (왼쪽 -> 오른쪽 배경색) --- */
-.view-btn, .download-btn {
+/* .view-btn, .download-btn {
     display: inline-flex;
     align-items: center;
     padding: 12px 25px;
@@ -376,7 +405,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: #f0f0f0; /* 채워질 배경색 */
+    background-color: #f0f0f0; /* 채워질 배경색 
     transition: left 0.4s cubic-bezier(0.7, 0, 0.3, 1);
     z-index: -1;
 }
@@ -393,8 +422,7 @@
 .work-link:hover .view-btn .work-arrow, 
 .download-btn:hover .work-arrow {
     transform: translate(3px, -3px); 
-}
-
+} */
 
 /* --- Responsive (모바일 대응) --- */
 @media (max-width: 1024px) {
@@ -424,130 +452,162 @@
 /* --- Experience Section --- */
 
 #experience {
-    padding: 150px 0; /* 위아래 섹션 간 여유로운 간격 */
+    padding: 150px 0; /* 섹션 간 간격 */
 }
 
-/* 1. 상단 정보 박스 (왼쪽 정렬) */
-.exp-header-box {
-    max-width: 580px;
-    margin-bottom: 20px;
-}
-
-.exp-intro {
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 30px 0; /* 제목과 버튼 사이 간격 */
-    word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
-}
-
-/* 2. 하단 리스트 박스  */
-.exp-body-box {
+.exp-layout{
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between;
+    gap: 60px; 
 }
-
-.exp-list {
-    width: 65%; 
-    border-top: 1px solid #eee; 
-}
-
-/* 3. 리스트 개별 아이템 */
-.exp-item {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    text-align: left; /* 버튼 중앙정렬 해제 */
-    padding: 30px 0;
-    gap: 40px;
-    font-family: inherit; /* 부모 폰트 상속 */
-    transition: background-color 0.3s ease;
-}
-
-.exp-num {
+.exp-layout .group-title{
     font-size: 18px;
-    font-weight: 700;
-    color: #111;
-    width: 50px; /* 숫자 영역 너비 고정 */
-    flex-shrink: 0; /*이거 뭔뜻이지*/
+    font-weight: 600;
+    padding: 10px 0;
 }
 
-.exp-txt {
-    flex: 1; /* 가용한 공간 모두 차지 */
+.exp-sidebar-list{
+    border-top: 1px solid #eee;
+    padding: 30px 0;
 }
 
-.exp-txt h3 {
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    margin-bottom: 10px;
+.exp-sidebar{
+    width: 250px;
+    flex-shrink: 0; 
+    box-sizing: border-box;
+}
+.exp-sidebar-list{
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-.exp-txt p {
+.exp-sidebar .resume-btn{
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2B2B2B;
+    transition: color 0.3s ease;
+}
+.resume-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.resume-btn:hover{
+    color: #4d4d4d;
+}
+
+.resume-btn:hover .resume-arrow {
+    transform: translate(3px, -3px); 
+    color: var(--primary-color); 
+}
+
+.exp-sidebar dt{
     font-size: 14px;
+    font-weight: 600;
+    color: #2B2B2B;
+    margin-bottom: 6px;
+}
+.exp-sidebar dd{
+    font-size: 13px;
     font-weight: 300;
+    line-height: 1.9;
     color: #666;
+    position: relative; /* 불릿 위치 조절을 위한 기준 */
+    padding-left: 12px; /* 불릿이 들어갈 공간 확보 */
+}
+.exp-sidebar dd::before {
+    content: ""; /* 빈 컨텐츠 */
+    position: absolute;
+    left: 0;
+    top: 8px; /* 텍스트 높이에 맞춰 조정 */
+    width: 3px;
+    height: 3px;
+    background-color: #999; /* 불릿 색상 */
+    border-radius: 50%; /* 동그랗게 */
 }
 
-.exp-img-box img {
+
+/* How I Worked */
+.exp-content{
+    flex: 1;
+}
+.exp-how-content{
+    border-top: 1px solid #eee;
+    padding: 30px 20px;
+}
+.exp-header-box{
+    padding-bottom: 100px;
+}
+
+/* 1. 상단 시각 자료 영역 (이미지 2개) */
+.how-visual-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 1:1 비율로 배치 */
+    gap: 30px; /* 이미지 사이 간격 */
+    margin-bottom: 60px; /* 하단 텍스트와의 간격 */
+}
+
+.how-visual-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 번호를 이미지 중앙에 맞춤 */
+    gap: 15px;
+}
+
+.how-img-box {
+    width: 100%;
+    aspect-ratio: 3 / 2; /* 지혜님이 원한 450:300 비율 유지 */
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.how-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 이미지가 박스에 꽉 차도록 */
-    filter: grayscale(100%); /* 잡지 느낌을 위해 흑백 처리 (선택사항) */
-    transition: filter 0.3s ease;
-}
-.exp-item:hover .exp-img-box img {
-    filter: grayscale(0%); /* 호버 시에만 컬러로 변경 */
+    object-fit: cover;
 }
 
-/* --- 📱 모바일 반응형 --- */
-@media (max-width: 1024px) {
-    .exp-list {
-        width: 100%; /* 태블릿부터는 100% 채워서 가독성 확보 */
-    }
-    #experience {
-        padding: 100px 0; 
-    }
+.how-num {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color); /* 프라이머리 컬러 포인트 */
 }
 
-@media (max-width: 768px) {
-    .exp-intro {
-        font-size: 15px;
-    }
-    .exp-item {
-        gap: 20px;
-        padding: 25px 0;
-    }
-    
-    .exp-txt h3 {
-        font-size: 18px;
-        line-height: 1.4;
-    }
-    .exp-num {
-        font-size: 16px;
-        width: 35px; /* 숫자가 차지하는 폭을 줄임 */
-    }
-    
+/* 2. 하단 매거진 텍스트 영역 (2단) */
+.how-text-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 70%;
+    gap: 40px;
 }
-@media (max-width: 500px) {
-    #experience {
-        padding: 80px 0; 
-    }
-    .exp-header-box{
-        margin-bottom: 50px;
-    }
-    .exp-img-box {
-        display: none;
-    }
-    .exp-item {
-        gap: 15px; 
-    }
-    .exp-txt p {
-        font-size: 13px; 
-    }
+
+.text-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 16px; /* 단락 간 간격 */
+    text-align: justify;
+    word-break: keep-all; 
+    text-justify: inter-character;
+    overflow-wrap: break-word;
+}
+
+.text-col strong {
+    font-weight: 600;
+    color: #2b2b2b;
+}
+
+/* 본문 내 각주 번호 */
+.ref-num {
+    color: var(--primary-color);
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 2px;
+    vertical-align: super; /* 윗첨자로 올림 */
+    margin-left: 2px;
 }
 
 
@@ -629,115 +689,148 @@
 #contact{
     margin-bottom:120px;
 }
-#contact .section-title{
-    margin-bottom: 60px;
-}
-
-/* 2. Contact 바디 (flexbox 정렬 핵심) */
-.contact-body {
-    display: flex;
-    align-items: flex-start; /* 요소들을 위쪽 기준으로 정렬 */
-    gap: 40px; /* 각 요소 사이 기본 간격 */
-}
-
-/* 3. 왼쪽 세로 이미지 영역 */
-.contact-visual {
-    flex-shrink: 0; /* 이미지 박스 너비 고정 */
-}
-
-.visual-box {
-    background-color: #eaeaea; /* 평소엔 회색 박스 */
-    overflow: hidden; /* 이미지가 넘치면 숨김 */
-}
-
-.visual-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지가 박스에 꽉 차게 */
-    display: block;
-}
-
-/* 4. 중간 가로 선 (CSS로 선 그리기 핵심) */
-.contact-line {
-    flex: 1; /* 가용한 공간 모두 차지 (선이 길게 늘어남) */
-    height: 1px;
-    background-color: #ddd; /* 연한 구분선 */
-    margin-top: 15px; /* HEY :) 문구와 세로 높이 맞추기 */
-}
-
-/* 5. 오른쪽 정보 영역 */
-.contact-info {
-    width: 320px; /* 정보 영역 너비 제한 */
-    flex-shrink: 0;
-}
-
-/* "HEY : )" 문구 */
-.info-greeting {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 30px; /* 리스트와 간격 */
-}
-
-/* 정보 리스트 (Name, Tel 등) */
-.info-list {
+.contact-header {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* 정보 한 줄 사이 간격 */
+    align-items: center; /* 자식 요소들을 가로 중앙으로 */
+    text-align: center;
+    padding: 150px 0 100px;
+}
+.contact-header .big-typo {
+    justify-content: center; /* 기존 flex 속성 대응 */
+    width: 100%;
+    line-height: 0.8;
+    margin-bottom: 0; /* 기존 마진이 있다면 초기화 */
 }
 
-.info-list li {
+.outro-description {
     display: flex;
-    align-items: center; /* 라벨과 값이 일직선상에 오게 */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    
+    /* 텍스트 스타일 */
+    /* font-size: clamp(1.2rem, 3vw, 2.2rem); */
+    /* font-weight: 700; */
+    /* color: var(--primary-color); */
 }
-
-/* 라벨 (Name., Tel.) */
-.info-label {
-    width: 70px; /* 라벨 영역 너비 고정 */
-    font-size: 14px;
+.outro-description .bracket-wrap {
+    font-size: clamp(2rem, 5vw, 5rem);
     font-weight: 600;
     color: #2B2B2B;
+
+}
+
+.outro-txt {
+    font-size: clamp(0.6rem, 1.6vw, 1.4rem); 
+    font-weight: 400;
+    color: var(--primary-color); 
+    letter-spacing: -0.02em;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 각주 가상선택자 넣을 때 필요함 */
+/* .outro-description::after {
+    content: ''; 
+    position: absolute;
+    right: -25px; 
+    top: -5px; 
+    
+    width: 28px; 
+    height: 28px;
+    background: url('your-symbol.svg') no-repeat center/contain;
+} */
+
+
+
+.contact-info-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 하단 라인을 맞춰 정갈하게 */
+    
+    width: 100%;
+    max-width: 500px; /* 명함보다 살짝 넓은 매거진 판형 느낌 */
+    aspect-ratio: 5 / 3;
+    margin: 100px auto 0;
+    padding: 50px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/* --- 좌측: 심볼 & 이름 --- */
+.card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-symbol {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+/* 심볼 이미지로 바꿀 경우 */
+/* .card-symbol {
+    display: block; 
+    width: 40px;
+    height: auto;
+    line-height: 0; 
+} */
+/* .card-symbol img {
+    width: 100%;  
+    height: auto;
+    display: block;
+} */
+
+.card-name-ko {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.card-name-en {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+    letter-spacing: 0.1em;
+}
+
+/* --- 우측: 정보 리스트 --- */
+.card-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: right;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+}
+
+.info-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase; /* 소문자여도 대문자로 변환해 전문성 부여 */
 }
 
 .info-value {
-    flex: 1; /* 가용한 공간 모두 차지 */
     font-size: 14px;
-    font-weight: 300;
-    color: #666;
-    letter-spacing: -0.01em;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* --- 📱 모바일 반응형 --- */
-@media (max-width: 1024px) {
-    .contact-body {
-        gap: 30px; /* 간격을 살짝 좁힘 */
-    }
+.info-value:hover {
+    color: var(--primary-color);
 }
-
-@media (max-width: 768px) {
-    /* 모달처럼 텍스트를 위로 올리는 구조로 변경 */
-    .contact-body {
-        flex-direction: column; /* 세로 나열 */
-        align-items: flex-start; 
-        gap: 20px;
-    }
-
-    #contact .section-title {
-        font-size: 44px;
-        margin-bottom: 60px;
-    }
-
-    .contact-line {
-        display: none; /* 모바일에서는 가로 선 제거 (정렬 방해) */
-    }
-
-    .contact-info {
-        width: 100%; /* 전체 너비 사용 */
-    }
-
-    .visual-box {
-        width: 120px; /* 이미지 크기 조절 */
-        height: 240px;
-    }
-}
-
