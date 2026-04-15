@@ -63,3 +63,18 @@ modal.addEventListener('click', (e) => {
         document.body.style.overflow = ''; // 배경 스크롤 복구
     }
 });
+
+const video = document.getElementById('myVideo');
+const btn = document.getElementById('muteBtn');
+
+if (video && btn) { // 혹시나 해서 예외처리 추가 (더 안전함)
+    btn.addEventListener('click', function() {
+        if (video.muted) {
+            video.muted = false;
+            btn.innerText = "Sound Off";
+        } else {
+            video.muted = true;
+            btn.innerText = "Sound On";
+        }
+    });
+}
