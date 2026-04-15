@@ -16,10 +16,13 @@
     <main>
         <!-- hero 브랜드 필름 -->
         <section id="brand-film" class="hero-section">
-            <div class="video-frame">
-                <video autoplay muted loop playsinline class="bg-video">
+            <div class="video-frame" style="position: relative;">
+                <video id="myVideo" autoplay muted loop playsinline class="bg-video">
                     <source src="./images/main/brand-film.mp4" type="video/mp4">
                 </video>
+                <button id="muteBtn" style="position: absolute; bottom: 20px; right: 20px; background: none; border: 1px solid #fff; color: #fff; cursor: pointer; padding: 5px 10px; z-index: 10;">
+                    Sound On
+                </button>
             </div>
 
             <div class="container scroll-container reveal">
