@@ -79,7 +79,7 @@
 .works-bridge .strategy-line { grid-column: 2 / span 10; }
 .works-bridge .work-line { grid-column: 7 / -1; }
 .editorial-note-section .editorial-note-link {
-    grid-column: 2 / span 6;
+    grid-column: 2 / span 4;
 }
 
 /* 대형 타이포 스타일 */
@@ -188,6 +188,18 @@
     padding: 20px;
     border: 1px solid transparent; /* 호버 시 가이드라인 용 */
 }
+.editorial-note-link {
+    display: block; /* 필수 */
+    position: relative;
+
+    background-image: url('../../images/main/work00-folder.png');
+    background-size: cover;
+    background-position: center;
+
+    padding: 60px;
+    color: white;
+}
+
 .point-star {
     font-size: 2em;
     color: var(--primary-color);
